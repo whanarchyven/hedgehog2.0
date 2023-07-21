@@ -1,0 +1,71 @@
+.inputContainer{
+    width: 100%;
+}
+.inputContainerLabel{
+    color: #575757;
+    font-family: Gilroy;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.inputWrapper{
+    width: 96%;
+    height: 68px;
+    border-radius: 16px;
+    background: #F3F3F4;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Nekst;
+    font-weight: 900;
+    font-size: 30px;
+    padding: 0% 2%;
+    pointer-events: all;
+    border: 1px solid rgba(255, 149, 20, 0);
+    box-shadow: 0px 0px 0px 4px rgba(255, 149, 20, 0);
+}
+.inputWrapper:hover{
+    background: #EAEAEB;
+}
+.inputWrapper:focus-within{
+    background: transparent;
+    border: 1px solid #FF9514;
+    box-shadow: 0px 0px 0px 4px rgba(255, 149, 20, 0.2);
+}
+.textInput{
+    width: 100%;
+    background: transparent;
+    font-family: Nekst;
+    font-weight: 900;
+    font-size: 30px;
+    border:none;
+}
+.textInput:focus{
+    border: none;
+    outline: none;
+}
+.rangeInput{
+    position: absolute;
+    left: 0px;
+    bottom: -5px;
+    margin-left: 2%;
+    width: 96%;
+}
+
+@media screen and (max-width: 320px) {
+    .inputContainerLabel{
+        color: #575757;
+        font-family: Gilroy;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    .inputWrapper{
+        font-size: 22px;
+    }
+    .textInput{
+        font-size: 22px;
+
+    }
+}

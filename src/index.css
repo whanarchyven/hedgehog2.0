@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+    background: #F0F0F0;
+}
+button{
+    cursor: pointer;
+}
+#chat24-root{
+    opacity: 0;
+}
+
+/*.chat24-container{*/
+/*    display: none;*/
+/*}*/
+/*.chat24-container:nth-child(4){*/
+/*    display: none;*/
+/*}*/
+.account-input{
+    border: 1px solid black;
+}
+.widget{
+    position: absolute;
+    top: 0;
+    bottom: auto;
+}
+.protein-graph>g>path{
+    opacity: 1;
+}
+
+.protein-graph-innertext{
+    display:grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.protein-graph-innertext>text:nth-child(1){
+}
+.protein-graph-innertext>text:nth-child(2){
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@layer utilities {
+    .login-background{background: linear-gradient(180.92deg, #F5F5F5 0.79%, #DEC7E9 122.47%);}
+    .auth-button{
+        background: linear-gradient(180deg, #25D39F 0%, #0D936A 100%);
+        box-shadow: 0px 2.75497px 6px rgba(0, 0, 0, 0.11);
+        border-radius: 26.8609px;
+    }
+
+
+    .timer-background{
+        background: url("/images/bg_wait_mobile.png");
+    }
+
+
+    .grey-gradient{
+        background: #F0F0F0;
+        box-shadow: inset 0px 0.871287px 1.74257px rgba(0, 0, 0, 0.18);
+    }
+
+
+
+
+
+    .recipes-bg{
+        background: linear-gradient(180deg, #7A27AC 0%, #846DE0 100%);
+    }
+    .account-input{
+        box-shadow: inset 0px 1.45986px 5.83943px rgba(0, 0, 0, 0.13);
+        background: #F5F5F5;
+    }
+    .bonus-button{
+        background: linear-gradient(180deg, #CF228A 0%, #E999C9 100%);
+    }
+    .calc-button{
+        background: linear-gradient(180deg, #2DB58C 0%, #75D9BB 100%);
+    }
+
+
+    .water-button{
+        background: linear-gradient(180deg, #3A54DB 0%, #529BF0 100%);
+    }
+
+    .food-button{
+        background: linear-gradient(180deg, #8A27AC 0%, #E06DC7 100%);
+    }
+
+    .recipe-wrapper{
+        background: linear-gradient(360deg, #7D3CBC 23.68%, rgba(125, 60, 188, 0) 100%);
+    }
+
+    .progress-button{
+        background: linear-gradient(180deg, #8D358E 0%, #B83BBB 100%);
+    }
+
+    .orange-grad{
+        background: radial-gradient(171.43% 171.43% at 50% 50%, #FFCD1C 0%, #FEBE1B 33.59%, #FCA018 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    }
+
+    .navbar-shadow{
+        box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.25);
+    }
+}
+
