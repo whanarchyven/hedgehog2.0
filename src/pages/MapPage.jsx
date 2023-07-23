@@ -21,7 +21,7 @@ const MapPage = () => {
 
 
     const fetchUsersPosts = async () => {
-        await axios.get(`http://localhost:5000/posts/`, {headers: {Authorization: access}}).then((res, err) => {
+        await axios.get(`${server}/posts/`, {headers: {Authorization: access}}).then((res, err) => {
             setPosts(res.data)
         })
     }

@@ -30,7 +30,7 @@ const AccountPage = () => {
 
 
     const fetchUsersPosts = async () => {
-        await axios.get(`http://localhost:5000/posts/user/${account.username}/`,{headers:{Authorization:access}}).then((res, err) => {
+        await axios.get(`${server}/posts/user/${account.username}/`,{headers:{Authorization:access}}).then((res, err) => {
             setUserPosts(res.data.reverse())
         })
     }

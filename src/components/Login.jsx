@@ -17,7 +17,7 @@ const Login = () => {
         axios.post(`${server}/users/login/`, {
             username: email,
             password: password,
-        })
+        },)
             .then(function (response) {
                 console.log(response.data.token);
                 dispatch(setUser({

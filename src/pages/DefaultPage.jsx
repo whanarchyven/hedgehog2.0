@@ -12,7 +12,7 @@ import {useEffect,useState} from "react";
 import { server } from 'components/env/env';
 
 
-const HomePage = () => {
+const DefaultPage = () => {
     const dispatch = useDispatch();
     const {push} = useHistory()
     const {isAuth, user,access} = useAuth();
@@ -41,23 +41,10 @@ const HomePage = () => {
             <Redirect to="/login" />
         </Layout>
     ) : (
-
         <Layout>
-            <div className={'w-full h-24 bg-orrange rounded-b-[50px] relative flex items-center justify-center'}>
-                {/*<img src={searchWrapper} className={'w-full h-full absolute left-0 top-0'}/>*/}
-                <div className={'w-72'}>
-                    <CustomInput placeholder={"Найдём нужное событие!"} icon={searchIcon}></CustomInput>
-                </div>
-            </div>
-            <div className={'p-4 pb-32 overflow-y-scroll'}>
-                {posts?.map((post)=>{
-                    return (
-                        <Post {...post}></Post>
-                    )
-                })}
-            </div>
+            <Redirect to="/feed" />
         </Layout>
     )
 }
 
-export default HomePage
+export default DefaultPage
