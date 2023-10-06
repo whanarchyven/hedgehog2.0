@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import image from 'images/drag_n_drop.png';
 
 const DragNDrop = (props) => {
     const [dragActive, setDragActive] = React.useState(false);
@@ -58,7 +58,7 @@ const DragNDrop = (props) => {
                     <div className={'w-full flex items-center justify-center bg-black rounded-full h-12 p-3 font-bold text-white'}>Загружено!</div>
                     {/*<button className="upload-button" onClick={onButtonClick}>Upload a file</button>*/}
                 </div>:<div className={'flex items-center'}>
-                    <div className={'w-full flex items-center justify-center bg-black rounded-full h-12 p-3 font-bold text-white'}>Загрузить</div>
+                    <div className={'w-full aspect-square'}><img className={'w-full h-full'} src={image}/></div>
                     {/*<button className="upload-button" onClick={onButtonClick}>Upload a file</button>*/}
                 </div>}
             </label>

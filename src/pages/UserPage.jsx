@@ -1,4 +1,4 @@
-import {Redirect, useHistory} from 'react-router-dom';
+import {Redirect, useHistory, useParams} from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {useAuth} from 'hooks/use-auth';
 import {removeUser} from 'store/slices/userSlice'
@@ -10,59 +10,47 @@ import {useEffect, useState} from "react";
 import {server} from "../components/env/env";
 import axios from "axios";
 import Button from "../components/UI/Button";
+import arrow from 'images/arrow_back.svg'
 import {getLevel} from "../components/helpers/getLevel";
 import {motion} from "framer-motion";
-import {classList} from "../components/helpers/classList";
 
-const AccountPage = () => {
+const UserPage = () => {
     const dispatch = useDispatch();
     const {push} = useHistory()
-    const {isAuth, user, access} = useAuth();
-
-
-    const tempDate = '2022-09-26T10:00:00.301Z'
-
-    const time = new Date();
-    const secondsFull = Math.floor((new Date(tempDate).valueOf() - new Date().valueOf()) / 1000)
-    time.setSeconds(secondsFull)
-
+    const router = useHistory()
+    const {isAuth, user,access} = useAuth();
 
     const [account, setAccount] = useState(null)
     const [userPosts, setUserPosts] = useState(null)
 
+    const {id}=useParams()
 
     const [postsLoading, setPostsLoading] = useState(true)
 
     const fetchUsersPosts = async () => {
-        await axios.get(`${server}/posts/user/${account.username}/`, {headers: {Authorization: access}}).then((res, err) => {
+        await axios.get(`${server}/posts/user/${account.username}/`,{headers:{Authorization:access}}).then((res, err) => {
             setUserPosts(res.data.reverse())
             setPostsLoading(false);
         })
     }
 
-    const fetchUser = async (id) => {
-        await axios.get(`${server}/users/${id}/`, {headers: {Authorization: access}}).then((res, err) => {
+    const fetchUser=async ()=>{
+        await axios.get(`${server}/users/${id}/`,{headers:{Authorization:access}}).then((res, err) => {
             setAccount(res.data)
         })
     }
 
     useEffect(() => {
-        fetchUser(JSON.parse(user)._id)
+        fetchUser()
     }, [])
 
-    useEffect(() => {
-        if (account) {
+    useEffect(()=>{
+        if(account){
             fetchUsersPosts()
         }
-    }, [account])
+    },[account])
 
-    const variants={
-        close:{y: -20, opacity: 0},
-        open:{y: 0, opacity: 1}
-    }
-
-
-    const [isShowed, setIsShowed] = useState(false)
+    const [isShowed,setIsShowed]=useState(false)
 
     return isAuth ? (
         <Layout>
@@ -91,19 +79,12 @@ const AccountPage = () => {
                         }} className={'font-inter font-medium text-sm underline text-white mt-1'}>Подробнее</p>
                     </div>
                     <img src={profileOverlay} className={'w-full z-[0] absolute bottom-0 h-full object-cover'}/>
-                    <div className={'absolute z-[999] flex flex-col items-end right-3 top-3'}>
+                    <div className={'absolute z-[999] flex flex-col items-end left-3 top-3'}>
                         <div onClick={() => {
-                            setIsShowed(!isShowed)
-                        }} className={'w-8'}>
-                            <img className={'w-full aspect-square'} src={`${server}/settings.svg`}/>
+                            router.goBack()
+                        }} className={'w-7'}>
+                            <img className={'w-full aspect-square'} src={arrow}/>
                         </div>
-                        <motion.div animate={!isShowed?"close":"open"} variants={variants} className={classList('relative flex justify-end items-end w-20 p-2 bg-white mt-2 rounded-xl',!isShowed?'opacity-0':'')}>
-                            <p onClick={() => {
-                                localStorage.removeItem('userInfo');
-                                localStorage.removeItem('userAccess');
-                                push('/login')
-                            }} className={'underline font-bold'}>Выйти</p>
-                        </motion.div>
                     </div>
                 </div>
                 <div className={'p-4'}>
@@ -150,4 +131,4 @@ const AccountPage = () => {
     )
 }
 
-export default AccountPage
+export default UserPage

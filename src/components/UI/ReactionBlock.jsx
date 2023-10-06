@@ -4,6 +4,7 @@ import DislikeButton from "./DislikeButton";
 import axios from "axios";
 import {server} from "../env/env";
 import {useAuth} from "../../hooks/use-auth";
+import comment_icon from "images/icons/comment.svg"
 
 const ReactionBlock = (props) => {
 

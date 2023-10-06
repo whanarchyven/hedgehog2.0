@@ -9,6 +9,8 @@ import AccountPage from "./pages/AccountPage";
 import PublicationPage from "./pages/PublicationPage";
 import PostPage from "./pages/PostPage";
 import DefaultPage from "pages/DefaultPage";
+import UserPage from "./pages/UserPage";
+import RatingPage from "./pages/RatingPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <Route exact path="/account" component={AccountPage}></Route>
       <Route exact path="/publication" component={PublicationPage}></Route>
       <Route exact path="/post/:id" component={PostPage}></Route>
+        <Route exact path="/users/:id" component={UserPage}></Route>
+        <Route exact path="/rating" component={RatingPage}></Route>
     </Switch>
   );
 }

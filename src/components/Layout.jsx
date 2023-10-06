@@ -7,7 +7,7 @@ const Layout = (props) => {
             <div>
                 {props.children}
             </div>
-            <div className={'fixed w-full left-0 bottom-0'}>
+            <div className={'fixed w-full z-[999] left-0 bottom-0'}>
                 <Navbar>
                 </Navbar>
             </div>

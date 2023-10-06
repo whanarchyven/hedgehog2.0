@@ -73,7 +73,7 @@ const MapPage = () => {
                                         iconLayout: "default#image",
                                         iconImageSize: [39, 52],
                                     }} defaultGeometry={[post?.yCoord, post?.xCoord]} properties={{
-                                        balloonContentHeader: `<div class="flex justify-center flex-col"><h2 class="text-xl font-bold">${post.caption.split(' ').slice(0, 5).join(' ') + ' ...'}</h2><p class="text-sm font-bold">${post.nickname}</p><img class="rounded-xl border-2 border-orrange w-60 aspect-square object-cover " src="${server}/${post.image}"/>
+                                        balloonContentHeader: `<div class="flex justify-center flex-col"><h2 class="text-xl font-bold">${post.caption.split(' ').slice(0, 5).join(' ') + ' ...'}</h2><p class="text-sm font-bold">${post.nickname}</p><img class="rounded-xl border-2 border-orrange w-60 aspect-square object-cover " src="${server}/${post.image.split('|')[0]}"/>
 <button onclick="document.getElementById('aue').click()" class="p-3 mt-3 w-60 bg-orrange font-inter text-white font-bold flex items-center rounded-full justify-center">Смотреть полностью</button></button></div>`,
                                         balloonAutoPan: true,
                                         openBalloonOnClick: true,

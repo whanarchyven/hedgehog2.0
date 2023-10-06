@@ -10,7 +10,7 @@ const NavbarLink = ({navbarItem}) => {
             push(navbarItem.link)
         }}>
             {window.location.pathname==navbarItem.link?<img className={'w-full aspect-square'} src={navbarItem.activeImg}/>:<img className={'w-full aspect-square'} src={navbarItem.passiveImg}/>}
-            <p className={classList('font-inter font-bold text-sm lowercase',window.location.pathname==navbarItem.link?'text-orrange':'text-grrey')}>{navbarItem.name}</p>
+            {/*<p className={classList('font-inter font-bold text-sm lowercase',window.location.pathname==navbarItem.link?'text-orrange':'text-grrey')}>{navbarItem.name}</p>*/}
         </a>
     );
 };

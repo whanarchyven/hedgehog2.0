@@ -4,7 +4,7 @@ import {classList} from "../helpers/classList";
 const Button = (props) => {
     return (
         <div
-            className={classList('p-3 bg-orrange font-inter text-white font-bold flex items-center rounded-full justify-center', props.className ? props.className : '')}
+            className={classList('p-3 font-inter font-bold flex items-center rounded-lg justify-center',props.outlined?'border-orrange border-2 text-orrange bg-transparent':'bg-orrange text-white', props.className ? props.className : '')}
             onClick={() => {
                 props.callback()
             }}>
