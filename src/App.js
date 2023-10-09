@@ -11,6 +11,9 @@ import PostPage from "./pages/PostPage";
 import DefaultPage from "pages/DefaultPage";
 import UserPage from "./pages/UserPage";
 import RatingPage from "./pages/RatingPage";
+import ToursPage from "./pages/ToursPage";
+import TourPage from "./pages/TourPage";
+import PlacePage from "./pages/PlacePage";
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
       <Route exact path="/post/:id" component={PostPage}></Route>
         <Route exact path="/users/:id" component={UserPage}></Route>
         <Route exact path="/rating" component={RatingPage}></Route>
+        <Route exact path="/tours" component={ToursPage}></Route>
+        <Route exact path="/tours/:id" component={TourPage}></Route>
+        <Route exact path="/places/:id" component={PlacePage}></Route>
     </Switch>
   );
 }

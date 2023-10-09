@@ -7,6 +7,9 @@ import publication from 'images/icons/publication.svg'
 import publication_active from 'images/icons/publication_active.svg'
 import account from 'images/icons/account.svg'
 import account_active from 'images/icons/account_active.svg'
+import tours from "images/icons/tours.svg"
+import tours_active from "images/icons/tours_active.svg"
+
 import NavbarLink from "./NavbarLink";
 
 
@@ -30,6 +33,12 @@ const Navbar = (currentTab) => {
             activeImg:publication_active,
             passiveImg:publication,
             link:'/publication'
+        },
+        {
+            name:'турмаршруты',
+            activeImg:tours_active,
+            passiveImg:tours,
+            link:'/tours'
         },{
             name:'профиль',
             activeImg:account_active,
@@ -39,7 +48,7 @@ const Navbar = (currentTab) => {
     ]
 
     return (
-        <div className={'w-full navbar-shadow bg-white p-2 rounded-t-xl h-20 justify-items-center gap-4 grid grid-cols-4'}>
+        <div className={'w-full navbar-shadow bg-white p-2 rounded-t-xl h-20 justify-items-center gap-4 grid grid-cols-5'}>
             {links.map((item)=>{
                 return (<NavbarLink navbarItem={item}></NavbarLink>)
             })}
