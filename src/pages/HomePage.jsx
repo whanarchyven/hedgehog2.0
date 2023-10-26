@@ -23,18 +23,19 @@ const HomePage = () => {
     const secondsFull = Math.floor((new Date(tempDate).valueOf() - new Date().valueOf()) / 1000)
     time.setSeconds(secondsFull)
 
-    const [posts, setPosts] = useState(null)
+    const [posts, setPosts] = useState([])
 
+    const [caption,setCaption]=useState('')
 
     const fetchUsersPosts = async () => {
-        await axios.get(`${server}/posts/`,{headers:{Authorization:access}}).then((res, err) => {
+        await axios.get(`${server}/posts?caption=${caption}`,{headers:{Authorization:access}}).then((res, err) => {
             setPosts(res.data)
         })
     }
 
     useEffect(()=>{
         fetchUsersPosts()
-    },[])
+    },[caption])
 
     return !isAuth ? (
         <Layout>
@@ -46,11 +47,11 @@ const HomePage = () => {
             <div className={'w-full h-24 bg-orrange rounded-b-[50px] relative flex items-center justify-center'}>
                 {/*<img src={searchWrapper} className={'w-full h-full absolute left-0 top-0'}/>*/}
                 <div className={'w-72'}>
-                    <CustomInput placeholder={"Найдём нужное событие!"} icon={searchIcon}></CustomInput>
+                    <CustomInput value={caption} Setter={setCaption} placeholder={"Найдём нужное событие!"} icon={searchIcon}></CustomInput>
                 </div>
             </div>
             <div className={'p-4 pb-32 overflow-y-scroll'}>
-                {posts?.map((post)=>{
+                {posts.length>0&&posts?.map((post)=>{
                     return (
                         <Post {...post}></Post>
                     )

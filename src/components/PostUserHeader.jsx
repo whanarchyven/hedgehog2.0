@@ -31,7 +31,7 @@ const PostUserHeader = (props) => {
                 setIsLoading(false)
             })
         }
-    },[props])
+    },[])
 
 
 

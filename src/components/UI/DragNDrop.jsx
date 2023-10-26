@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import image from 'images/drag_n_drop.png';
+import {uploadFileBlob} from "../helpers/uploadFileBlob";
 
 const DragNDrop = (props) => {
     const [dragActive, setDragActive] = React.useState(false);
@@ -32,12 +33,14 @@ const DragNDrop = (props) => {
     };
 
     // triggers when file is selected with click
-    const handleChange = function(e) {
+    const handleChange =async function(e) {
         e.preventDefault();
         if (e.target.files && e.target.files[0]&&props.setFile!=undefined) {
             console.log(e.target.files);
-            props.setFile(e.target.files)
-            setTempFile(e.target.files[0])
+            let resized=await uploadFileBlob(e.target.files).then((res)=>{
+                props.setFile(res)
+                setTempFile(res[0])
+            })
         }
 
     };
