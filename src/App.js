@@ -23,7 +23,7 @@ function App() {
       <Route exact path="/register" component={RegistrationPage} />
       <Route exact path="/recover" component={PasswordRecover} />
       <Route exact path="/feed" component={HomePage}></Route>
-      <Route exact path="/map" component={MapPage}></Route>
+      <Route exact path="/map" render={(props)=><MapPage {...props}/>}></Route>
       <Route exact path="/account" component={AccountPage}></Route>
       <Route exact path="/publication" component={PublicationPage}></Route>
       <Route exact path="/post/:id" component={PostPage}></Route>

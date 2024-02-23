@@ -15,6 +15,8 @@ import { server } from 'components/env/env';
 const HomePage = () => {
     const dispatch = useDispatch();
     const {push} = useHistory()
+    const savedData=localStorage.getItem('')
+
     const {isAuth, user,access} = useAuth();
 
     const tempDate='2022-09-26T10:00:00.301Z'
@@ -39,18 +41,18 @@ const HomePage = () => {
 
     return !isAuth ? (
         <Layout>
-            <Redirect to="/login" />
+            <Redirect to="/login"/>
         </Layout>
     ) : (
 
         <Layout>
-            <div className={'w-full h-24 bg-orrange rounded-b-[50px] relative flex items-center justify-center'}>
+            <div className={'w-full sm:max-w-[480px] h-24 bg-orrange rounded-b-[50px] relative flex items-center justify-center'}>
                 {/*<img src={searchWrapper} className={'w-full h-full absolute left-0 top-0'}/>*/}
                 <div className={'w-72'}>
                     <CustomInput value={caption} Setter={setCaption} placeholder={"Найдём нужное событие!"} icon={searchIcon}></CustomInput>
                 </div>
             </div>
-            <div className={'p-4 pb-32 overflow-y-scroll'}>
+            <div className={'p-4 pb-32'}>
                 {posts.length>0&&posts?.map((post)=>{
                     return (
                         <Post {...post}></Post>

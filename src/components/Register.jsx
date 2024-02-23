@@ -64,9 +64,9 @@ const Register = () => {
 
 
     return (
-        <div className={'w-full flex items-center px-5 flex-col'}>
-            <div className={'grid grid-cols-3 gap-5 items-center'}>
-                <div className={'col-span-2 flex flex-col items-center'}>
+        <div className={'w-full flex items-center px-2 py-6 flex-col'}>
+            <div className={'grid grid-cols-1 gap-5 justify-center items-center'}>
+                <div className={'flex flex-col items-center'}>
                     <CustomInput value={name} Setter={setName} placeholder={'Имя'} icon={personIcon} ></CustomInput>
                     <CustomInput value={surname} Setter={setSurname} placeholder={'Фамилия'} icon={personIcon} ></CustomInput>
                     <CustomInput value={email} Setter={setEmail} placeholder={'Email'} icon={emailIcon} ></CustomInput>
@@ -74,19 +74,22 @@ const Register = () => {
                 </div>
                 <div className={'flex items-center p-2 justify-start h-full flex-col'}>
                     <p className={'text-black mb-2 font-[500] text-xl'}>Аватар:</p>
-                    <div className={'w-full mb-3 aspect-square border-2 border-white rounded-full'}>
-                        {avatar?<img className={'w-full rounded-full  h-full object-cover'}
-                                     src={URL.createObjectURL(avatar[0])}/>:null}
-                    </div>
-                    <DragNDrop file={avatar} setFile={setAvatar}></DragNDrop>
+                    {avatar?<div className={'w-full mb-3 aspect-square border-2 border-white rounded-full'}>
+                            {avatar?<img className={'w-full rounded-full  h-full object-cover'}
+                                         src={URL.createObjectURL(avatar[0])}/>:null}
+                        </div>:
+                        <div className={'bg-white flex rounded-lg overflow-hidden items-center justify-center'}>
+                            <DragNDrop file={avatar} setFile={setAvatar}></DragNDrop>
+                        </div>}
                 </div>
+                <button className={'w-full p-3 text-white my-8 font-[500] text-xl font-inter bg-black rounded-full'}
+                        onClick={() => handleRegister(email, pass,name,surname,avatar)}
+                >
+                    Регистрация
+                </button>
+                <a href={'/login'} className={'font-normal my-3 font-inter text-center w-full mt-4 text-white'}>У меня есть аккаунт <span className={'underline font-bold'}>Войти</span></a>
             </div>
-            <button className={'w-full h-12 text-white mt-8 font-[500] text-xl font-inter bg-black rounded-full'}
-                    onClick={() => handleRegister(email, pass,name,surname,avatar)}
-            >
-                Регистрация
-            </button>
-            <a href={'/login'} className={'font-normal font-inter mt-4 text-white'}>У меня есть аккаунт <span className={'underline font-bold'}>Войти</span></a>
+
         </div>
     )
 }

@@ -42,7 +42,7 @@ const ToursPage = () => {
             <div className={'w-full h-24 bg-orrange rounded-b-[50px] relative flex items-center justify-center'}>
                 <p className={'text-white font-bold w-full text-center text-2xl'}>Прогулки в Чебоксарах</p>
             </div>
-            <div className={'p-4 pb-32 mt-12 flex flex-col gap-12 overflow-y-scroll'}>
+            <div className={'p-4 pb-32 mt-12 flex flex-col gap-12'}>
                 {tours?.map((tour)=>{
                     return (
                         <TourBanner {...tour}></TourBanner>

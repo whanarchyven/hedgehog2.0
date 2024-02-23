@@ -4,7 +4,7 @@ import logo from 'images/logo.png'
 
 const LoginPage = () => {
     return (
-        <div className={'w-full min-h-screen relative flex justify-center items-center overflow-x-hidden flex-wrap bg-white'}>
+        <div className={'w-full sm:max-w-[480px] min-h-screen relative flex justify-center items-center overflow-x-hidden flex-wrap bg-white'}>
             <div className={'flex-wrap w-full flex justify-center z-[999]'}>
                 <div className={'h-[50vh] flex flex-col items-center justify-center w-full'}>
                     <p className={'font-bold my-3 text-black text-4xl font-inter'}>Войти</p>

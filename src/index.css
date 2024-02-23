@@ -4,44 +4,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body{
-    background: #F0F0F0;
+    background: url("main_bg.png");
+    backdrop-filter: brightness(90%) blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 button{
     cursor: pointer;
 }
-#chat24-root{
-    opacity: 0;
-}
 
-/*.chat24-container{*/
-/*    display: none;*/
-/*}*/
-/*.chat24-container:nth-child(4){*/
-/*    display: none;*/
-/*}*/
 .account-input{
     border: 1px solid black;
 }
-.widget{
-    position: absolute;
-    top: 0;
-    bottom: auto;
-}
-.protein-graph>g>path{
-    opacity: 1;
-}
 
-.protein-graph-innertext{
-    display:grid;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-}
-
-.protein-graph-innertext>text:nth-child(1){
-}
-.protein-graph-innertext>text:nth-child(2){
-    font-weight: bold;
-    font-size: 1.2rem;
-}
 
 @layer utilities {
     .login-background{background: linear-gradient(180.92deg, #F5F5F5 0.79%, #DEC7E9 122.47%);}

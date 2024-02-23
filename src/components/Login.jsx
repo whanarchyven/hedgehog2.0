@@ -24,10 +24,8 @@ const Login = () => {
                     access: response.data.token,
                     user: JSON.stringify(response.data.user),
                 }))
-                localStorage.setItem('userAccess', response.data.token);
                 localStorage.setItem('userInfo', JSON.stringify(response.data.user));
-                console.log(localStorage.getItem("userAccess"));
-                console.log(localStorage.getItem("userInfo"));
+                localStorage.setItem('userPass',password)
                 push('/')
 
             })
@@ -39,14 +37,36 @@ const Login = () => {
     }
 
     useEffect(()=>{
-        const loggedInUser=localStorage.getItem("userAccess")
-        if (loggedInUser) {
-            dispatch(setUser({
-                access: localStorage.getItem("userAccess"),
-                user: localStorage.getItem("userInfo"),
-            }))
-            console.log(loggedInUser)
-            push('/')
+        const oldDataPass=localStorage.getItem("userPass")
+        const oldDataUser=JSON.parse(localStorage.getItem("userInfo"))
+        if (oldDataPass&&oldDataUser) {
+            console.log(oldDataUser.username,oldDataPass)
+            axios.post(`${server}/users/login/`, {
+                username: oldDataUser.username,
+                password: oldDataPass,
+            },)
+                .then(function (response) {
+                    console.log(response.data.token);
+                    dispatch(setUser({
+                        access: response.data.token,
+                        user: JSON.stringify(response.data.user),
+                    }))
+                    localStorage.setItem('userInfo', JSON.stringify(response.data.user));
+                    localStorage.setItem('userPass',oldDataPass)
+                    push('/')
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    console.log(`${server}/users/login/`)
+                    alert("Неверный логин или пароль")
+                })
+            // dispatch(setUser({
+            //     access: localStorage.getItem("userAccess"),
+            //     user: localStorage.getItem("userInfo"),
+            // }))
+            // console.log(loggedInUser)
+            // push('/')
         }
     },[])
 

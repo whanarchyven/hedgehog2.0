@@ -19,6 +19,8 @@ import close from "images/icons/close.svg"
 
 import place from "images/icons/mark_place.svg"
 import {classList} from "./helpers/classList";
+import {Link, Redirect} from "react-router-dom";
+import router from "react-router-dom/es/Router";
 
 const Post = (props) => {
 
@@ -81,9 +83,9 @@ const Post = (props) => {
                     className={'w-full my-8 flex-col items-center'}>
             <div className={'flex items-center justify-between'}>
                 <PostUserHeader location={props.location} user={props?.user} date={props?.date}></PostUserHeader>
-                <div className={'p-1 text-white text-xs bg-orrange flex items-center justify-center rounded-xl'}>
+                <Link to={{pathname:'/map',params:{x:props.xCoord,y:props.yCoord}}} className={'p-1 text-white text-xs bg-orrange flex items-center justify-center rounded-xl'}>
                     <img src={place} className={'w-full h-full'}/>
-                </div>
+                </Link>
             </div>
             {/*<img src={`${server}/${props?.image}`} className={'w-full object-cover mt-4 aspect-square'}/>*/}
             <PostGallery imagesUrl={props?.image}></PostGallery>

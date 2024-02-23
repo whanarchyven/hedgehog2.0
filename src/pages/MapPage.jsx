@@ -1,4 +1,4 @@
-import {Redirect, useHistory} from 'react-router-dom';
+import {Redirect, useHistory, useParams} from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {useAuth} from 'hooks/use-auth';
 import {removeUser} from 'store/slices/userSlice'
@@ -10,7 +10,7 @@ import placemark from "images/placemark.png"
 import {server} from "../components/env/env";
 
 
-const MapPage = () => {
+const MapPage = (props) => {
     const dispatch = useDispatch();
     const {push} = useHistory()
     const {isAuth, email, access} = useAuth();
@@ -30,6 +30,7 @@ const MapPage = () => {
         fetchUsersPosts()
     }, [])
 
+    console.log(props)
 
     let clusterPoints = [];
     if (isAuth) {
@@ -43,13 +44,12 @@ const MapPage = () => {
                        query={{
                            apikey: 'a321da86-701d-4977-9102-a74a167bb7aa',
                        }}
-
                 >
                     <Map width={'100%'} height={window.innerHeight}
                          modules={["control.ZoomControl", "control.FullscreenControl", 'geoObject.addon.balloon', 'geoObject.addon.hint']}
                          defaultState={{
-                             center: [56.139918, 47.247728],
-                             zoom: 9,
+                             center: [props?.location?.params?.y??55.781904, props?.location?.params?.x??49.125207],
+                             zoom: props?.location?.params?.x?15:9,
                              controls: ["zoomControl", "fullscreenControl"],
                          }}
                     >

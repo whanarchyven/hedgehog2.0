@@ -23,18 +23,6 @@ const DefaultPage = () => {
     const secondsFull = Math.floor((new Date(tempDate).valueOf() - new Date().valueOf()) / 1000)
     time.setSeconds(secondsFull)
 
-    const [posts, setPosts] = useState(null)
-
-
-    const fetchUsersPosts = async () => {
-        await axios.get(`${server}/posts/`,{headers:{Authorization:access}}).then((res, err) => {
-            setPosts(res.data)
-        })
-    }
-
-    useEffect(()=>{
-        fetchUsersPosts()
-    },[])
 
     return !isAuth ? (
         <Layout>
