@@ -91,7 +91,7 @@ const PublicationPage = () => {
                         setLoading(true);
                         const reqst = new FormData();
                         reqst.append('caption', caption)
-                        reqst.append('location', 'Казань')
+                        reqst.append('location', 'Россия')
                         reqst.append('xCoord', coords.longitude.toString())
                         reqst.append('yCoord', coords.latitude.toString())
                         for (let i = 0; i < file.length; i++) {

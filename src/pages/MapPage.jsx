@@ -48,8 +48,8 @@ const MapPage = (props) => {
                     <Map width={'100%'} height={window.innerHeight}
                          modules={["control.ZoomControl", "control.FullscreenControl", 'geoObject.addon.balloon', 'geoObject.addon.hint']}
                          defaultState={{
-                             center: [props?.location?.params?.y??55.781904, props?.location?.params?.x??49.125207],
-                             zoom: props?.location?.params?.x?15:9,
+                             center: [props?.location?.params?.y??55.754740, props?.location?.params?.x??37.621408],
+                             zoom: props?.location?.params?.x?15:11,
                              controls: ["zoomControl", "fullscreenControl"],
                          }}
                     >
