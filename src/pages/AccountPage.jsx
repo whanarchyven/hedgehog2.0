@@ -74,7 +74,7 @@ const AccountPage = () => {
                                  src={account?.avatar ? `${server}/${account?.avatar}` : ''}/> : <div
                                 className={'w-36 h-36 object-cover mt-4 rounded-full border-2 border-transparent bg-zinc-300 animate-pulse'}></div>}
                         {account ?
-                            <p className={'font-inter font-bold text-2xl leading-[100%] text-white mt-3'}>{account?.name} {account?.surname}</p> :
+                            <p className={'font-inter font-bold text-2xl leading-[100%] text-cBlack mt-3'}>{account?.name} {account?.surname}</p> :
                             <div className={'w-32 mt-3 rounded-full h-6 bg-zinc-300 animate-pulse'}></div>}
                         <div className={'w-52 mt-2'}>
                             {account ? <ProgressBar
@@ -83,12 +83,12 @@ const AccountPage = () => {
                                 <ProgressBar value={0} maximum={100}></ProgressBar>}
                         </div>
                         {account ?
-                            <p className={'font-inter font-bold leading-[100%] text-lg text-white mt-3'}>{account ? getLevel(account?.exp)[0].level : 0} уровень
+                            <p className={'font-inter font-bold leading-[100%] text-lg text-cBlack mt-3'}>{account ? getLevel(account?.exp)[0].level : 0} уровень
                                 - {account ? getLevel(account?.exp)[0].name : 0}</p> :
                             <div className={'mt-3 bg-zinc-300 rounded-full h-4 animate-pulse w-60'}></div>}
                         <p onClick={() => {
                             push('/rating')
-                        }} className={'font-inter font-medium text-sm underline text-white mt-1'}>Подробнее</p>
+                        }} className={'font-inter font-medium text-sm underline text-cBlack mt-1'}>Подробнее</p>
                     </div>
                     <img src={profileOverlay} className={'w-full z-[0] absolute bottom-0 h-full object-cover'}/>
                     <div className={'absolute z-[999] flex flex-col items-end right-3 top-3'}>

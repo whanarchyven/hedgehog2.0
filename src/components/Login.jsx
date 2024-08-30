@@ -74,16 +74,15 @@ const Login = () => {
     const [pass, setPass] = useState('');
 
     return (
-        <div className={'w-full flex items-center px-5 flex-col'}>
-            <CustomInput value={email} Setter={setEmail} placeholder={'Email'} icon={emailIcon} ></CustomInput>
-            <CustomInput type={'password'} value={pass} Setter={setPass} placeholder={'Password'} icon={passIcon}></CustomInput>
-            <button className={'w-full h-12 text-white mt-8 font-[500] text-xl font-inter bg-black rounded-full'}
+        <div className={'w-full flex items-center flex-col'}>
+            <CustomInput value={email} Setter={setEmail} placeholder={'Имя пользователя'} ></CustomInput>
+            <CustomInput type={'password'} value={pass} Setter={setPass} placeholder={'Пароль'} ></CustomInput>
+            <button className={'w-full text-white mt-8 p-4 text-base font-inter bg-cBlack font-semibold uppercase rounded-2xl'}
                     onClick={() => handleLogin(email, pass)}
             >
-                Войти
+                Войти в аккаунт
             </button>
-            <a href={'/recover'} className={'font-bold font-inter mt-4 underline text-white'}>Забыл пароль</a>
-            <a href={'/register'} className={'font-normal font-inter mt-4 text-white'}>Нет аккаунта? <span className={'underline font-bold'}>Регистрация</span></a>
+            <a href={'/register'} className={'font-normal font-inter mt-4 text-cBlack'}>Нет аккаунта? <span className={'underline font-bold'}>Регистрация</span></a>
         </div>
     )
 }

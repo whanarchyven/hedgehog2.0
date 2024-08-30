@@ -48,7 +48,7 @@ const MapPage = (props) => {
                     <Map width={'100%'} height={window.innerHeight}
                          modules={["control.ZoomControl", "control.FullscreenControl", 'geoObject.addon.balloon', 'geoObject.addon.hint']}
                          defaultState={{
-                             center: [props?.location?.params?.y??55.754740, props?.location?.params?.x??37.621408],
+                             center: [props?.location?.params?.y??56.1479229009648, props?.location?.params?.x??47.20487408565136],
                              zoom: props?.location?.params?.x?15:11,
                              controls: ["zoomControl", "fullscreenControl"],
                          }}
@@ -62,6 +62,7 @@ const MapPage = (props) => {
                         <Clusterer
                             options={{
                                 preset: "islands#invertedOrangeClusterIcons",
+
                                 groupByCoordinates: false,
                             }}
                         >
@@ -69,12 +70,12 @@ const MapPage = (props) => {
                             {posts?.map((post) => {
                                 return (
                                     <Placemark key={post.id} options={{
-                                        iconImageHref: `${server}/placemark.svg`,
+                                        iconImageHref: placemark,
                                         iconLayout: "default#image",
                                         iconImageSize: [39, 52],
                                     }} defaultGeometry={[post?.yCoord, post?.xCoord]} properties={{
                                         balloonContentHeader: `<div class="flex justify-center flex-col"><h2 class="text-xl font-bold">${post.caption.split(' ').slice(0, 5).join(' ') + ' ...'}</h2><p class="text-sm font-bold">${post.nickname}</p><img class="rounded-xl border-2 border-orrange w-60 aspect-square object-cover " src="${server}/${post.image.split('|')[0]}"/>
-<button onclick="document.getElementById('aue').click()" class="p-3 mt-3 w-60 bg-orrange font-inter text-white font-bold flex items-center rounded-full justify-center">Смотреть полностью</button></button></div>`,
+<button onclick="document.getElementById('aue').click()" class="p-3 mt-3 w-60 bg-orrange font-inter text-cBlack font-bold flex items-center rounded-full justify-center">Смотреть полностью</button></button></div>`,
                                         balloonAutoPan: true,
                                         openBalloonOnClick: true,
                                     }} onClick={()=>{setActiveBalloonId(post._id)}}>

@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 // Import Swiper React components
 import {Swiper, SwiperSlide} from 'swiper/react';
-
+import geo from "images/geo.svg"
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -10,6 +10,8 @@ import 'index.css'
 // import required modules
 import {Pagination, Navigation} from 'swiper';
 import {server} from "./env/env";
+import {Link} from "react-router-dom";
+import place from "../images/icons/mark_place.svg";
 
 const PostGallery = (props) => {
 
@@ -20,11 +22,11 @@ const PostGallery = (props) => {
     },[props])
 
     return (
-        <div className={'w-full my-3 rounded-lg shadow-xl overflow-clip aspect-square'}>
+        <div className={'w-full relative rounded-lg shadow-xl overflow-clip aspect-square'}>
             <Swiper
                 pagination={{
-                    type: 'progressbar',
-                    progressbarFillClass: 'progress-bar-orange'
+                    type: 'bullets',
+                    bulletActiveClass: 'bg-[#FFE868] opacity-100',
                 }}
                 modules={[Pagination, Navigation]}
                 className="mySwiper w-full z-0 h-full"
@@ -39,6 +41,13 @@ const PostGallery = (props) => {
                 })}
                 {!photos ? <SwiperSlide><div className={'w-full h-full rounded-lg bg-zinc-300 animate-pulse'}></div></SwiperSlide> : null}
             </Swiper>
+            {!props?.disableMap&&<div className={'absolute flex items-center font-semibold justify-center px-4 py-2 rounded-full gap-2 left-3 bottom-3 bg-orrange z-50'}>
+                <Link to={{pathname:'/map',params:{x:props.xCoord,y:props.yCoord}}} className={'p-1 text-white text-xs bg-orrange flex items-center justify-center rounded-xl'}>
+                    <img className={'w-4 aspect-square'} src={geo}/>
+                </Link>
+
+                {props.location}
+            </div>}
         </div>
     );
 };

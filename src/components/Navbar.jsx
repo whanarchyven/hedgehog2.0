@@ -10,7 +10,10 @@ import account_active from 'images/icons/account_active.svg'
 import tours from "images/icons/tours.svg"
 import tours_active from "images/icons/tours_active.svg"
 
+import sidebar from "images/sidebar.svg"
+
 import NavbarLink from "./NavbarLink";
+import tr from "react-timeago/lib/language-strings/tr";
 
 
 const Navbar = (currentTab) => {
@@ -32,6 +35,7 @@ const Navbar = (currentTab) => {
             name:'публикация',
             activeImg:publication_active,
             passiveImg:publication,
+            isHidden:true,
             link:'/publication'
         },
         {
@@ -48,10 +52,15 @@ const Navbar = (currentTab) => {
     ]
 
     return (
-        <div className={'w-full navbar-shadow bg-white p-2 rounded-t-xl h-20 justify-items-center gap-4 grid grid-cols-5'}>
-            {links.map((item)=>{
-                return (<NavbarLink navbarItem={item}></NavbarLink>)
-            })}
+        <div className={'w-full  p-2 rounded-t-xl h-20 relative'}>
+            <img className={'absolute left-0 bottom-0 w-full '} src={sidebar}/>
+            <div className={'absolute left-0 bottom-0 w-full h-full items-center grid grid-cols-5'}>
+                {links.map((item)=>{
+                    return (<div className={'flex items-center justify-center'}>
+                        <NavbarLink navbarItem={item}></NavbarLink>
+                    </div>)
+                })}
+            </div>
         </div>
     );
 };

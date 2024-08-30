@@ -7,7 +7,7 @@ import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import russianStrings from "react-timeago/lib/language-strings/ru";
 import {classList} from "./helpers/classList";
 import {useHistory} from "react-router-dom";
-
+import posts_settings from "images/posts_settings.svg"
 const PostUserHeader = (props) => {
     const [user,setUser]=useState(null)
     const [isLoading,setIsLoading]=useState(true);
@@ -47,10 +47,11 @@ const PostUserHeader = (props) => {
                 </div>
                 <div className={'flex flex-col gap-1'}>
                     {isLoading?<div className={'h-3 w-32 bg-zinc-300 animate-pulse rounded-full'}></div>:<p className={'text-sm leading-[100%] font-inter font-bold'}>{user?.name} {user?.surname}</p>}
-                    {isLoading?<div className={'h-3 w-20 bg-zinc-300 animate-pulse rounded-full'}></div>:<p className={'text-xs leading-[100%] font-normal'}>{props?.location}</p>}
+                    {/*{isLoading?<div className={'h-3 w-20 bg-zinc-300 animate-pulse rounded-full'}></div>:<p className={'text-xs leading-[100%] font-normal'}>{props?.location}</p>}*/}
+                    {isLoading?<div className={'h-3 w-20 bg-zinc-300 animate-pulse rounded-full'}></div>:<p className={'text-xs font-inter text-[#555555]'}><TimeAgo date={props?.date} formatter={formatter}/></p>}
                 </div>
+
             </div>
-            {isLoading?<div className={'h-3 w-20 bg-zinc-300 animate-pulse rounded-full'}></div>:<p className={'text-xs font-inter text-[#555555]'}><TimeAgo date={props?.date} formatter={formatter}/></p>}
         </div>
     );
 };

@@ -6,12 +6,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
-        'inter': ['Inter',],
+        'inter': ['Manrope',],
       },
       colors:{
-        'orrange':'#FFC81C',
+        'orrange':'#FFE868',
         'grrey':'#6B6B6B',
-        'bblue':'#96C1EC'
+        'bblue':'#96C1EC',
+        'cBlack':'#2A1010'
       },
       keyframes: {
         'fade-in-down': {

@@ -16,6 +16,7 @@ import fa from "react-timeago/lib/language-strings/fa";
 import PostGallery from "./PostGallery";
 import PostUserHeader from "./PostUserHeader";
 import close from "images/icons/close.svg"
+import posts_settings from "images/posts_settings.svg"
 
 import place from "images/icons/mark_place.svg"
 import {classList} from "./helpers/classList";
@@ -51,13 +52,6 @@ const Post = (props) => {
     }
 
 
-    const addComment = async (comment) => {
-        axios.post(`${server}/posts/add-comment/`, {content: comment, id: props._id}, {
-            headers: {Authorization: access}
-        }).then((err, res) => {
-            console.log(err, res)
-        })
-    }
 
     const [newComment, setNewComment] = useState('')
     const [isCommentsPopOpen, setIsCommentsPopOpen] = useState(false)
@@ -74,49 +68,51 @@ const Post = (props) => {
         closed:{opacity:0},
     }
 
+    // <Link to={{pathname:'/map',params:{x:props.xCoord,y:props.yCoord}}} className={'p-1 text-white text-xs bg-orrange flex items-center justify-center rounded-xl'}>
+    //     <img src={place} className={'w-full h-full'}/>
+    // </Link>
 
     return (
         <motion.div initial={{y: -20, opacity: 0}}
                     whileInView={{y: 0, opacity: 1}}
                     viewport={{once: true}}
                     transition={{ease: 'easeInOut', duration: 0.7}}
-                    className={'w-full my-8 flex-col items-center'}>
-            <div className={'flex items-center justify-between'}>
+                    className={'w-full my-8 flex-col pb-7 border-[1px] border-[#DDDDDD] rounded-2xl p-1 items-center'}>
+            <div className={'flex items-center  p-2 px-4 justify-between'}>
                 <PostUserHeader location={props.location} user={props?.user} date={props?.date}></PostUserHeader>
-                <Link to={{pathname:'/map',params:{x:props.xCoord,y:props.yCoord}}} className={'p-1 text-white text-xs bg-orrange flex items-center justify-center rounded-xl'}>
-                    <img src={place} className={'w-full h-full'}/>
-                </Link>
+                <img className={'w-5'} src={posts_settings}/>
             </div>
             {/*<img src={`${server}/${props?.image}`} className={'w-full object-cover mt-4 aspect-square'}/>*/}
-            <PostGallery imagesUrl={props?.image}></PostGallery>
-            <p className={'font-inter mt-4 text-justify font-normal leading-[100%]'}>{props?.caption}</p>
-            <ReactionBlock closeCommentPop={() => {
+            <PostGallery xCoord={props.xCoord} yCoord={props.yCoord} location={props.location} imagesUrl={props?.image}></PostGallery>
+            <ReactionBlock _id={props._id} comments={coments} closeCommentPop={() => {
                 setIsCommentsPopOpen(true)
             }} dislikes={dislikes} postId={props._id} access={props.access} likes={likes}
                            updateDislikes={updateDislikes} updateLikes={updateLikes} user={props.user}/>
-            <Comments comments={coments}/>
-            <motion.div animate={isCommentsPopOpen?"open":"closed"} variants={variants1}
-                        className={classList('fixed top-0 left-0 w-full h-full bg-white z-[800] bg-opacity-50 backdrop-blur flex items-center justify-center',isCommentsPopOpen?'':'hidden')}>
-                <motion.div  className={'w-96 bg-white border-2 border-orrange p-3 rounded-xl'}>
-                    <div className={'w-full justify-between flex items-top'}>
-                        <p className={'text-xl font-bold text-black'}>Прокоментируйте публикацию <br/>{props?.nickname}!
-                        </p>
-                        <div onClick={() => {
-                            setIsCommentsPopOpen(false)
-                        }}><img src={close} className={'w-7 aspect-square'}/>
-                        </div>
-                    </div>
-                    <input onChange={(event) => {
-                        setNewComment(event.target.value)
-                    }} placeholder={'Ваш комментарий'}
-                           className={' p-2 border-orrange border-2 w-full rounded-xl mt-3 h-12'}/>
-                    <Button className={'mt-3 h-12'} callback={() => {
-                        addComment(newComment);
-                        updateLikes();
-                        setIsCommentsPopOpen(false)
-                    }}>Опубликовать</Button>
-                </motion.div>
-            </motion.div>
+            <p className={'font-inter px-4 mt-4 text-justify font-normal leading-[100%]'}>{props?.caption}</p>
+
+            {/*<Comments comments={coments}/>*/}
+            {/*<motion.div animate={isCommentsPopOpen?"open":"closed"} variants={variants1}*/}
+            {/*            className={classList('fixed top-0 left-0 w-full h-full bg-white z-[800] bg-opacity-50 backdrop-blur flex items-center justify-center',isCommentsPopOpen?'':'hidden')}>*/}
+            {/*    <motion.div  className={'w-96 bg-white border-2 border-orrange p-3 rounded-xl'}>*/}
+            {/*        <div className={'w-full justify-between flex items-top'}>*/}
+            {/*            <p className={'text-xl font-bold text-black'}>Прокоментируйте публикацию <br/>{props?.nickname}!*/}
+            {/*            </p>*/}
+            {/*            <div onClick={() => {*/}
+            {/*                setIsCommentsPopOpen(false)*/}
+            {/*            }}><img src={close} className={'w-7 aspect-square'}/>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <input onChange={(event) => {*/}
+            {/*            setNewComment(event.target.value)*/}
+            {/*        }} placeholder={'Ваш комментарий'}*/}
+            {/*               className={' p-2 border-orrange border-2 w-full rounded-xl mt-3 h-12'}/>*/}
+            {/*        <Button className={'mt-3 h-12'} callback={() => {*/}
+            {/*            addComment(newComment);*/}
+            {/*            updateLikes();*/}
+            {/*            setIsCommentsPopOpen(false)*/}
+            {/*        }}>Опубликовать</Button>*/}
+            {/*    </motion.div>*/}
+            {/*</motion.div>*/}
         </motion.div>
     );
 };

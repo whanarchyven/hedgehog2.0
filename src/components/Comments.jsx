@@ -10,20 +10,24 @@ const Comments = ({comments}) => {
 
     const [commentsContent,setCommentsContent]=useState([])
 
-    useEffect(()=>{
+    const fetchComments=async ()=>{
         let temp=[]
-        if(comments){
-            comments.map(async (comment)=>{
-                let tempComment='';
-                    await axios.get(`${server}/comments/${comment}`,{
-                    headers:{Authorization:access}
-                }).then((res)=>{
-                    tempComment=res.data
-                })
-                temp.push(tempComment)
+        comments.map(async (comment)=>{
+            const commentTemp =axios.get(`${server}/comments/${comment}`,{
+                headers:{Authorization:access}
             })
-        }
-        setCommentsContent(temp)
+            temp.push(commentTemp)
+        })
+        Promise.all(temp).then((values)=>{
+            setCommentsContent(values.map((value)=>{return value.data}))
+        })
+    }
+
+
+
+
+    useEffect(()=>{
+        fetchComments()
     },[])
 
     return (

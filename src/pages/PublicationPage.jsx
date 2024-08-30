@@ -74,12 +74,12 @@ const PublicationPage = () => {
     return isAuth ? (
         <Layout>
             <div className={'w-full h-24 bg-orrange rounded-b-[50px] px-5 relative flex items-center justify-start'}>
-                <p className={'text-white font-bold text-2xl font-inter'}>Новая публикация</p>
+                <p className={'text-cBlack font-bold text-2xl font-inter'}>Новое событие!</p>
             </div>
             <div className={'mt-5 px-5'}>
-                {imageUrl ? <PostGallery removeServerPrefix imagesUrl={imageUrl}></PostGallery> :
+                {imageUrl ? <PostGallery disableMap={true} removeServerPrefix imagesUrl={imageUrl}></PostGallery> :
                     <DragNDrop setFile={setFile}></DragNDrop>}
-                <p className={'font-bold mt-5 text-xl'}>Опишите публикацию</p>
+                <p className={'font-bold mt-5 text-xl'}>Опишите событие</p>
                 <textarea className={'w-full rounded-lg font-inter mt-4 border-2 p-2'} rows={textAreaHeight} onChange={handleChange}
                           placeholder={'Напишите что-нибудь'}></textarea>
                 <Button outlined className={'mt-4'} callback={() => {
@@ -91,7 +91,7 @@ const PublicationPage = () => {
                         setLoading(true);
                         const reqst = new FormData();
                         reqst.append('caption', caption)
-                        reqst.append('location', 'Россия')
+                        reqst.append('location', 'Москва')
                         reqst.append('xCoord', coords.longitude.toString())
                         reqst.append('yCoord', coords.latitude.toString())
                         for (let i = 0; i < file.length; i++) {
